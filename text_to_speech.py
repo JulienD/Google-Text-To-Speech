@@ -40,8 +40,9 @@ def getAudioFile(text, language):
 		# Checks if the request has already been saved.
 		return filepath
 	else:
+		audioFile = downloadAudioFile(text, language)
 		# Download the request.		
-		if (audioFile == downloadAudioFile(text, language)) :
+		if audioFile :
 			# Stores the mp3.
 			saveAudiofile(audioFile, filepath)
 			return filepath	
@@ -92,6 +93,10 @@ if __name__ == '__main__':
 
 	# Gets the string from the command args 2.
 	text = str(sys.argv[2])
+
+	# Creates the mp3 directory
+	if not os.path.exists(FILE_DIRECTORY):
+		os.makedirs(FILE_DIRECTORY)
 
 	# Gets the name of the file.
 	audioFile = getAudioFile(text, language)
