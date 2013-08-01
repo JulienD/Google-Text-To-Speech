@@ -1,0 +1,5 @@
+# Audio file
+*.mp3
+
+# OS X
+.DS_Store
